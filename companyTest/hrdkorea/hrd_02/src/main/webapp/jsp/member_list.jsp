@@ -4,7 +4,8 @@
 <%@ page import = "hrd_02.DBConnect" %>  	
 
 <%
-	String sql = "select custno,custname,phone,address,joindate,decode(grade,'A','VIP','B','일반','C','직원'),city from member_tbl_02";
+	String sql = "select custno,custname,phone,address,to_char(joindate, 'yyyy.mm.dd.')joindate,decode(grade,'A','VIP','B','일반','C','직원'),city from member_tbl_02";
+
 	Connection conn = DBConnect.getConnection();
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();

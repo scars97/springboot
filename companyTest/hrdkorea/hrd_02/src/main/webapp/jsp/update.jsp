@@ -4,7 +4,9 @@
 <%@ page import="hrd_02.DBConnect" %>	
 
 <%
-	String sql = "select custno, custname, phone, address, to_char(joindate, 'yyyymmdd')joindate, grade, city from member_tbl_02 where custno= " + request.getParameter("custno");
+	String sql = "select custno, custname, phone, address,to_char(joindate, 'yyyymmdd')joindate, grade, city from member_tbl_02 where custno=" 
+					+ request.getParameter("custno");
+
 	Connection conn = DBConnect.getConnection();
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();
@@ -66,7 +68,7 @@
 				<tr>
 					<td colspan="2">
 						<input type="submit" value="수정">
-						<button type="button" onclick="location.href='delete_p.jsp'">삭제</button>
+						<button type="button" onclick="removechk()">삭제</button>
 					</td>
 				</tr>
 			</table>
@@ -109,6 +111,16 @@
 		
 		alert("회원수정이 완료되었습니다.");
 		return true;
+	}
+	
+	function removechk(){
+		 if (confirm("정말 삭제하시겠습니까?") == true){    //확인
+			 alert("삭제되었습니다.");
+			 location.href="delete_p.jsp?custno=<%= rs.getString(1) %>";
+		 }else{   //취소
+		     return false;
+		 }
+		 
 	}
 </script>
 </body>

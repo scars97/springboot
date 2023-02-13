@@ -5,7 +5,8 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	String sql = "update member_tbl_02 set custname=?, phone=?,address=?,joindate=?,grade=?,city=? where custno=" + Integer.parseInt(request.getParameter("custno"));
+	String sql = "update member_tbl_02 set custname=?, phone=?,address=?,joindate=?,grade=?,city=? where custno=" 
+					+ Integer.parseInt(request.getParameter("custno"));
 	
 	Connection conn = DBConnect.getConnection(); //DB연결
 	PreparedStatement pstmt = conn.prepareStatement(sql); //쿼리문 담아서 보내줌

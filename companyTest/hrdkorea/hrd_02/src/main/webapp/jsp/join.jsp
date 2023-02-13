@@ -5,11 +5,11 @@
 
 <%
 	String sql = "select max(custno) from member_tbl_02";
-	Connection conn = DBConnect.getConnection();
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	ResultSet rs = pstmt.executeQuery();
+	Connection conn = DBConnect.getConnection(); //DB연결
+	PreparedStatement pstmt = conn.prepareStatement(sql); //연결된 DB에 쿼리문 날림
+	ResultSet rs = pstmt.executeQuery(); // 그 결과값을 rs에 담음.
 	
-	rs.next();
+	rs.next(); //값이 있다면 아래 코드 실행
 	int maxCustno = rs.getInt(1)+1;
 %>
 

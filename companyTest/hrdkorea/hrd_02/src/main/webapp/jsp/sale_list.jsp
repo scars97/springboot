@@ -5,6 +5,7 @@
 
 <%
 	String sql = "select e.custno, m.custname,decode(m.grade, 'A', 'VIP', 'B','일반','C','직원')grade,sum(e.price) price from member_tbl_02 m, money_tbl_02 e where m.custno = e.custno group by e.custno, m.custname, grade order by price desc";
+
 	Connection conn = DBConnect.getConnection();
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();
