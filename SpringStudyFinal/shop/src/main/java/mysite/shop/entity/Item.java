@@ -21,7 +21,6 @@ import mysite.shop.constant.ItemSellStatus;
 @Table(name = "item")
 @Getter
 @Setter
-@ToString
 public class Item {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,7 +42,11 @@ public class Item {
 	@Enumerated(EnumType.STRING)
 	private ItemSellStatus itemStatus; // 상품 판매 상태
 	
-	private LocalDateTime redTime; //상품 등록 시간
+	private LocalDateTime regTime; //상품 등록 시간
 	private LocalDateTime updateTime; // 상품 수정 시간
 
+	 @Override
+	 public String toString() {
+	     return id + " " + itemNum + " " + price + " " + itemDetail + " " + itemStatus + " " + stockNum ;
+	 }
 }
